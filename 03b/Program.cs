@@ -12,17 +12,18 @@ namespace _03a
     {
         static void Main(string[] args)
         {
-            string all = File.ReadAllText("input.txt");
-
+            string all = File.ReadAllText("input.txt").Replace("\n","").Replace("\r","");
+            all = Regex.Replace(all, "(don't\\(\\)).*?(?=do\\(\\)|don't\\(\\)|$)", "");
+            
             Regex rg = new Regex(@"(mul)\(\d{1,3},\d{1,3}\)");
             MatchCollection matched_muls = rg.Matches(all);
 
             List<string[]> numbers = new List<string[]>();
             foreach (Match match in matched_muls)
             {
-                numbers.Add(match.Value.Replace("mul(","").Replace(")","").Split(','));
+                numbers.Add(match.Value.Replace("mul(", "").Replace(")", "").Split(','));
             }
-            ;
+
             int sum = 0;
             foreach (string[] numberArray in numbers)
             {
