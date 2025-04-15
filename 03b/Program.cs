@@ -27,7 +27,7 @@ namespace _03a
             int sum = 0;
             foreach (string[] numberArray in numbers)
             {
-                sum = sum + (int.Parse(numberArray[0]) * int.Parse(numberArray[1]));
+                sum += (int.Parse(numberArray[0]) * int.Parse(numberArray[1]));
             }
         }
     }
