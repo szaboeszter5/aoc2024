@@ -18,14 +18,14 @@ namespace _03a
             Regex rg = new Regex(@"(mul)\(\d{1,3},\d{1,3}\)");
             MatchCollection matched_muls = rg.Matches(all);
 
-            List<string[]> numbers = new List<string[]>();
+            List<string[]> number_pairs = new List<string[]>();
             foreach (Match match in matched_muls)
             {
-                numbers.Add(match.Value.Replace("mul(", "").Replace(")", "").Split(','));
+                number_pairs.Add(match.Value.Replace("mul(", "").Replace(")", "").Split(','));
             }
 
             int sum = 0;
-            foreach (string[] numberArray in numbers)
+            foreach (string[] numberArray in number_pairs)
             {
                 sum += (int.Parse(numberArray[0]) * int.Parse(numberArray[1]));
             }
