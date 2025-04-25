@@ -57,8 +57,6 @@ namespace _05b
                     sum += int.Parse(line[(int)Math.Floor((double)line.Length / 2)]);
                 }
             }
-
-            // 4944 - not right
         }
     }
 }
