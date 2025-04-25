@@ -30,33 +30,35 @@ namespace _05b
             }
 
             int sum = 0; //of the middle page numbers from incorrectly-ordered updates
-
+            
             sr.ReadLine();
             while (!sr.EndOfStream)
             {
                 line = sr.ReadLine().Split(',');
 
                 int i = 0;
-                while ((i < line.Length - 1) && ((rules.ContainsKey(line[i]) && rules[line[i]].Contains(line[i + 1])) || (!rules[line[i + 1]].Contains(line[i]))))
+                while (i < line.Length - 1 && rules[line[i]].Contains(line[i + 1]))
                 {
                     i++;
                 }
 
                 if (i < line.Length - 1) // then its not in order
                 {
-                    for (i = 0; i < line.Length; i++)
+                    for (i = 0; i < line.Length; i++) 
                     {
-                        for (int j = 0; j < line.Length - 1; j++)
+                        for (int j = 0; j < line.Length-1; j++)
                         {
-                            if (rules.ContainsKey(line[j]) && !rules[line[j]].Contains(line[j + 1]) || (rules.ContainsKey(line[j + 1]) && rules[line[j + 1]].Contains(line[j])))
+                            if (rules.ContainsKey(line[j]) && !rules[line[j]].Contains(line[j+1]))
                             {
-                                (line[j], line[j + 1]) = (line[j + 1], line[j]);
+                                (line[j], line[j+1]) = (line[j+1], line[j]);
                             }
                         }
                     }
                     sum += int.Parse(line[(int)Math.Floor((double)line.Length / 2)]);
                 }
             }
+
+            // 4944 - not right
         }
     }
 }
