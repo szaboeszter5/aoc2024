@@ -41,6 +41,12 @@ namespace _07a
                 Solve(tree, level+1, root * Convert.ToUInt64(tree[level+1]));
             }
 
+            // Part 2
+            if (level < tree.Length - 1)
+            {
+                Solve(tree, level + 1, Convert.ToUInt64(root.ToString() + tree[level + 1]));
+            }
+
             return;
         }
     }
